@@ -22,8 +22,14 @@ const App = () => {
 
     // Starting search when page loads
     useEffect(() => {
-        searchMovies('batman');
+        searchMovies('new');
     }, []);
+
+    function handleKeyPress (e) {
+        if(e.key === 'Enter'){
+            searchMovies(searchTerm)
+        }
+    }
 
     return (
         <div className='app'>
@@ -36,6 +42,7 @@ const App = () => {
                     placeholder='Search for a movie'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyPress={(e) => handleKeyPress(e)}
                 />
                 <img
                     src={SearchIcon}
